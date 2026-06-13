@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  web01:
+    build:
+      context: ./
+      dockerfile: web/Dockerfile
+    container_name: web01-container
+    volumes:
+      - ./app/src:/var/www/vhosts/www.example.com.conf/public_html
+    ports:
+      - "80:80"
+    networks:
+      - fastapi_network
+
+  app01:
+    build:
+      context: ./
+      dockerfile: app/Dockerfile
+    container_name: app01-container
+    volumes:
+      - ./app/src:/var/www/vhosts/www.example.com.conf/public_html
+    restart: always
+    depends_on:
+      - web01
+    networks:
+      - fastapi_network
+  
+networks:
+  fastapi_network:
+    driver: bridge
