@@ -1,0 +1,42 @@
+[
+  {
+    "name": "${project}-${env}-nginx-container",
+    "image": "${nginx_container_image}",
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": ${nginx_container_port},
+        "hostPort": ${nginx_container_port},
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group_name}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "nginx"
+      }
+    }
+  },
+  {
+    "name": "${project}-${env}-python-container",
+    "image": "${python_container_image}",
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": ${python_container_port},
+        "hostPort": ${python_container_port},
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group_name}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "python"
+      }
+    }
+  }
+]

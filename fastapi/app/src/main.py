@@ -4,3 +4,7 @@ app = FastAPI()
 @app.get("/")
 def read_root():
    return {"Hello": "World"}
+
+@app.get("/healthcheck.html")
+def read_root():
+   return {"Status": "up"}

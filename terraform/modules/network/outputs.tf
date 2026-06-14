@@ -1,0 +1,39 @@
+output "vpc_id" {
+  description = "VPC ID"
+  value       = aws_vpc.this.id
+}
+
+output "vpc_cidr" {
+  description = "VPC CIDR block"
+  value       = aws_vpc.this.cidr_block
+}
+
+output "public_subnet_ids" {
+  description = "Public subnet IDs"
+  value       = aws_subnet.public[*].id
+}
+
+output "dmz_subnet_ids" {
+  description = "DMZ subnet IDs"
+  value       = aws_subnet.dmz[*].id
+}
+
+output "private_subnet_ids" {
+  description = "Private subnet IDs"
+  value       = aws_subnet.private[*].id
+}
+
+output "public_route_table_id" {
+  description = "Public route table ID"
+  value       = aws_route_table.public.id
+}
+
+output "dmz_route_table_id" {
+  description = "DMZ route table ID"
+  value       = aws_route_table.dmz.id
+}
+
+output "private_route_table_id" {
+  description = "Private route table ID"
+  value       = aws_route_table.private.id
+}

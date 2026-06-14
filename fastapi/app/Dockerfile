@@ -1,11 +1,14 @@
 FROM python:3.8-alpine
 
+ENV PYTHONUNBUFFERED=1
+
 #ドキュメントルート作成
-RUN mkdir -p /var/www/vhosts/www.example.com.conf/public_html
+RUN mkdir -p /var/www/vhosts/www.quick-infra.net.conf/public_html
 
-WORKDIR /var/www/vhosts/www.example.com.conf/public_html
+WORKDIR /var/www/vhosts/www.quick-infra.net.conf/public_html
 
-COPY ./app/src .
+#COPY ./app/src .
+COPY ./src .
 
 # コンテナイメージ内で必要なパッケージをインストール
 RUN apk add --no-cache vim less build-base && \

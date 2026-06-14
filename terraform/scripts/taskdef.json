@@ -1,0 +1,51 @@
+{
+  "family": "<PROJECT>-<ENV>-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "<EXECUTION_ROLE_ARN>",
+  "taskRoleArn": "<TASK_ROLE_ARN>",
+  "containerDefinitions": [
+    {
+      "name": "<PROJECT>-<ENV>-nginx-container",
+      "image": "<NGINX_REPOSITORY_URL>",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": <NGINX_CONTAINER_PORT>,
+          "hostPort": <NGINX_CONTAINER_PORT>,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/<PROJECT>-<ENV>",
+          "awslogs-region": "<REGION>",
+          "awslogs-stream-prefix": "nginx"
+        }
+      }
+    },
+    {
+      "name": "<PROJECT>-<ENV>-python-container",
+      "image": "<PYTHON_REPOSITORY_URL>",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": <PYTHON_CONTAINER_PORT>,
+          "hostPort": <PYTHON_CONTAINER_PORT>,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/<PROJECT>-<ENV>",
+          "awslogs-region": "<REGION>",
+          "awslogs-stream-prefix": "<PROJECT>-<ENV>-python-container"
+        }
+      }
+    }
+  ]
+}
