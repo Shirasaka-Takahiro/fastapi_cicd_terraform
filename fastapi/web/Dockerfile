@@ -1,4 +1,5 @@
-FROM nginx:latest
+#FROM nginx:1.25.0
+FROM public.ecr.aws/nginx/nginx:1.25.0
 
 #confファイルのコピー
 #COPY ./web/conf/www.quick-infra.net.conf /etc/nginx/conf.d
