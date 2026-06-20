@@ -169,6 +169,7 @@ ECS サービスは `deployment_controller = CODE_DEPLOY` とし、ALB には bl
 CodeBuild・CodePipeline 用ロールは `modules/codepipeline` 内、CodeDeploy 用ロールは `modules/codedeploy` 内で定義する (IAM 単独モジュールは作らない)。
 
 ## 5. 前提・手動作業
+
 - 既存の Route53 ホストゾーン (zone_id) が存在すること。
 - 既存の GitHub リポジトリへのアクセス権があること。
 - CodeStar Connections の接続承認は **初回のみ AWS コンソールで手動承認** が必要。
