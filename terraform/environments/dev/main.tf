@@ -122,6 +122,8 @@ module "ecs" {
   python_container_port  = var.python_container_port
   cpu                    = var.task_cpu
   memory                 = var.task_memory
+  launch_type            = var.launch_type
+  platform_version       = var.platform_version
   desired_count          = var.desired_count
   log_group_name         = module.cloudwatch_logs.log_group_name
   deployment_controller  = var.deployment_controller

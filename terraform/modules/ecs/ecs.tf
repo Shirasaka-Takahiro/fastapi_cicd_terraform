@@ -90,8 +90,8 @@ resource "aws_ecs_service" "this" {
   cluster          = aws_ecs_cluster.this.id
   task_definition  = aws_ecs_task_definition.this.arn
   desired_count    = var.desired_count
-  launch_type      = "FARGATE"
-  platform_version = "LATEST"
+  launch_type      = var.launch_type
+  platform_version = var.platform_version
 
   deployment_controller {
     type = var.deployment_controller

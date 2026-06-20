@@ -106,6 +106,21 @@ variable "python_container_port" {
 }
 
 # ----------------------------------------------------------------------------
+# ECS: service-level
+# ----------------------------------------------------------------------------
+variable "launch_type" {
+  description = "Launch type for ECS"
+  type        = string
+  default     = "FARGATE"
+}
+
+variable "platform_version" {
+  description = "Platform version for ECS"
+  type        = string
+  default     = "1.4.0"
+}
+
+# ----------------------------------------------------------------------------
 # ECS: task-level
 # ----------------------------------------------------------------------------
 variable "task_cpu" {
