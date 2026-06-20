@@ -116,6 +116,11 @@ resource "aws_codebuild_project" "this" {
     }
 
     environment_variable {
+      name  = "REGION"
+      value = "ap-northeast-1"
+    }
+
+    environment_variable {
       name  = "NGINX_REPOSITORY_URL"
       value = var.nginx_ecr_repository_url
     }

@@ -43,7 +43,7 @@
         "options": {
           "awslogs-group": "/ecs/<PROJECT>-<ENV>",
           "awslogs-region": "<REGION>",
-          "awslogs-stream-prefix": "<PROJECT>-<ENV>-python-container"
+          "awslogs-stream-prefix": "python"
         }
       }
     }
