@@ -12,10 +12,10 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building nginx image...
-      - docker build -t "$NGINX_REPOSITORY_URL:latest" ./fastapi/web/Dockerfile 
+      - docker build ./fastapi/web/Dockerfile -t "$NGINX_REPOSITORY_URL:latest"
       - docker tag "$NGINX_REPOSITORY_URL:latest" "$NGINX_REPOSITORY_URL:$IMAGE_TAG"
       - echo Building python image...
-      - docker build -t "$PYTHON_REPOSITORY_URL:latest" ./fastapi/app/Dockerfile 
+      - docker build ./fastapi/app/Dockerfile -t "$PYTHON_REPOSITORY_URL:latest"
       - docker tag "$PYTHON_REPOSITORY_URL:latest" "$PYTHON_IMAGE_URI:$IMAGE_TAG"
   post_build:
     commands:
