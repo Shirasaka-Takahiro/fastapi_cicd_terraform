@@ -16,7 +16,7 @@ phases:
       - docker tag $NGINX_REPOSITORY_URL:latest $NGINX_REPOSITORY_URL:$IMAGE_TAG
       - echo Building python image...
       - docker build ./fastapi/app -t $PYTHON_REPOSITORY_URL:latest
-      - docker tag $PYTHON_REPOSITORY_URL:latest $PYTHON_IMAGE_URI:$IMAGE_TAG
+      - docker tag $PYTHON_REPOSITORY_URL:latest $PYTHON_REPOSITORY_URL:$IMAGE_TAG
   post_build:
     commands:
       - echo Pushing nginx image...
@@ -24,7 +24,7 @@ phases:
       - docker push $NGINX_REPOSITORY_URL:$IMAGE_TAG
       - echo Pushing python image...
       - docker push $PYTHON_REPOSITORY_URL:latest
-      - docker push $PYTHON_IMAGE_URI:$IMAGE_TAG
+      - docker push $PYTHON_REPOSITORY_URL:$IMAGE_TAG
       - echo Substituting image URIs into taskdef.json...
       - sed -i -e "s#<PROJECT>#$PROJECT#g" terraform/scripts/taskdef.json
       - sed -i -e "s#<ENV>#$ENV#g" terraform/scripts/taskdef.json
