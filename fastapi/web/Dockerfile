@@ -1,4 +1,4 @@
-FROM nginx:1.25.0
+FROM nginx:latest
 
 #confファイルのコピー
 #COPY ./web/conf/www.quick-infra.net.conf /etc/nginx/conf.d
