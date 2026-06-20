@@ -169,10 +169,10 @@ ECS サービスは `deployment_controller = CODE_DEPLOY` とし、ALB には bl
 CodeBuild・CodePipeline 用ロールは `modules/codepipeline` 内、CodeDeploy 用ロールは `modules/codedeploy` 内で定義する (IAM 単独モジュールは作らない)。
 
 ## 5. 前提・手動作業
-
 - 既存の Route53 ホストゾーン (zone_id) が存在すること。
 - 既存の GitHub リポジトリへのアクセス権があること。
 - CodeStar Connections の接続承認は **初回のみ AWS コンソールで手動承認** が必要。
 - GitHub リポジトリのルートに `buildspec.yml` / `appspec.yaml` / `taskdef.json` を配置する (`examples/github-repo-files/` 参照)。`taskdef.json` 内の `<EXECUTION_ROLE_ARN>` / `<TASK_ROLE_ARN>` は ECS モジュールの出力値に、`family`・ロググループ名は環境に合わせて差し替える。
 - State 用の S3 バケット / DynamoDB テーブルは事前に作成しておく (またはブートストラップ用構成を別途用意)。
 - RDS のマスターパスワードは tfvars に直書きせず、`TF_VAR_` 環境変数または Secrets Manager 参照を推奨。
+- github_owner/github_repo の指定では末尾の.gitを省く。
